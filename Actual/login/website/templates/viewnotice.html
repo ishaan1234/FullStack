@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>View Notices</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/show_notice.css') }}">
+</head>
+
+<body>
+    <h1>Notices</h1>
+    <ul>
+        {% for head in data %}
+        <p id="para">
+            <span id="heading_{{ loop.index }}">{{ head[0] }}</span><br><br>
+            <span id="more_{{ loop.index }}" class="more">{{ head[1] }}</span>
+        </p>
+        <button id='myBtn_{{ loop.index }}' onclick="shownotice('more_{{ loop.index }}', 'myBtn_{{ loop.index }}')">Read
+            More</button><br><br>
+
+
+        {% endfor %}
+    </ul>
+    <form action="{{ url_for('auth.home') }}">
+        <button type="submit" class="btn1 btn-primary">
+            Home
+        </button>
+    </form>
+    <script src="{{ url_for('static', filename='show_notice.js') }}"></script>
+
+</body>
+
+</html>
